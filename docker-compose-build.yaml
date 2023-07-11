@@ -1,0 +1,10 @@
+version: "2.2"
+
+services:
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ES_VERSION: ${STACK_VERSION}
+    image: my-custom-elasticsearch
