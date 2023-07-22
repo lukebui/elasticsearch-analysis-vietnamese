@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
       args:
         ES_VERSION: ${STACK_VERSION}
-    image: my-custom-elasticsearch
+    image: lukenhatbui/vi_elasticsearch:${ELASTIC_STACK_VERSION}

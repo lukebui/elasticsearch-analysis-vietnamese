@@ -1,8 +1,8 @@
-version: "2.2"
+version: "3"
 
 services:
   setup:
-    image: my-custom-elasticsearch
+    image: lukenhatbui/vi_elasticsearch:${ELASTIC_STACK_VERSION}
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
     user: "0"
@@ -60,7 +60,7 @@ services:
     depends_on:
       setup:
         condition: service_healthy
-    image: my-custom-elasticsearch
+    image: lukenhatbui/vi_elasticsearch:${ELASTIC_STACK_VERSION}
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
       - esdata01:/usr/share/elasticsearch/data
@@ -102,7 +102,7 @@ services:
   es02:
     depends_on:
       - es01
-    image: my-custom-elasticsearch
+    image: lukenhatbui/vi_elasticsearch:${ELASTIC_STACK_VERSION}
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
       - esdata02:/usr/share/elasticsearch/data
@@ -144,7 +144,7 @@ services:
         condition: service_healthy
       es02:
         condition: service_healthy
-    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    image: kibana:${ELASTIC_STACK_VERSION}
     volumes:
       - certs:/usr/share/kibana/config/certs
       - kibanadata:/usr/share/kibana/data
